@@ -116,13 +116,13 @@ fun dexSprite(home: Home, s: Species) = Spirit.draw(home.look(s, home.g.plants.f
 @Composable
 private fun Cell(home: Home, s: Species, onClick: () -> Unit) {
     val known = s.id in home.caughtSpecies || s.id in home.seenSpecies
-    Column(Modifier.pixelBox(C.paper).clickable(onClick = onClick).padding(6.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.fillMaxWidth().pixelBox(C.paper).clickable(onClick = onClick).padding(6.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Row(Modifier.fillMaxWidth()) {
             Text(if (s.own) "★" else "№" + (home.content.species.indexOf(s) + 1).toString().padStart(3, '0'), style = T.Small, modifier = Modifier.weight(1f))
             Box(Modifier.padding(top = 3.dp).size(10.dp).background(C.ink).padding(2.dp).background(C.element(s.element)))
         }
         BufImage(remember(s.id, home.caughtSpecies, home.seenSpecies) { dexSprite(home, s) }, scale = 2.dp)
-        Text(if (known || s.own) s.name(home.ru) else "? ? ?", style = T.Small.copy(color = C.ink), textAlign = TextAlign.Center, maxLines = 2)
+        Text(if (known || s.own) s.name(home.ru) else "? ? ?", style = T.Small.copy(color = C.ink), textAlign = TextAlign.Center, minLines = 2, maxLines = 2, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
     }
 }
 
