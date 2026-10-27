@@ -2,7 +2,7 @@
 
 python tools/icon.py
 
-The picture is a 24×24 grid: a rootling in its pot, a leaf on its head, on the red of the field guide.
+The picture is a 24×24 grid: a rootling in its pot, a leaf on its head, on a windowsill against the sky.
 Each run of same-coloured pixels in a row becomes one rectangle in the vector path.
 """
 from pathlib import Path
@@ -37,10 +37,16 @@ GRID = [
     "........................",
 ]
 GRID = [r.ljust(24, ".")[:24] for r in GRID]
+# Behind the spirit: a window, its cross of frames over the sky, and the sill it stands on.
+GRID = [
+    "".join(("f" if (y in (9, 10) or x in (2, 3, 20, 21)) else "s" if y < 22 else "w" if y == 22 else "W") if ch == "." else ch for x, ch in enumerate(row))
+    for y, row in enumerate(GRID)
+]
 
 COLORS = {"k": "#FF202818", "g": "#FF48A058", "G": "#FF78C880", "d": "#FF286838", "c": "#FFF08878",
-          "p": "#FFB05A34", "P": "#FFE0905C", "q": "#FF8C4426"}
-BG = "#FFC83828"
+          "p": "#FFB05A34", "P": "#FFE0905C", "q": "#FF8C4426",
+          "s": "#FF9CC8F0", "f": "#FFF4F0E0", "w": "#FFD8B890", "W": "#FFA07850"}
+BG = "#FF9CC8F0"
 
 
 def runs():
@@ -64,7 +70,7 @@ def vector(scale, offset, mono=False):
     for ch, rs in runs().items():
         d = " ".join(f"M{offset + x * scale:.2f},{offset + y * scale:.2f}h{w * scale:.2f}v{scale:.2f}h{-w * scale:.2f}z" for x, y, w in rs)
         color = "#FFFFFFFF" if mono else COLORS[ch]
-        if mono and ch in "kpPqc":
+        if mono and ch in "kpPqcsfwW":
             continue
         paths.append(f'    <path android:fillColor="{color}" android:pathData="{d}" />')
     return paths
