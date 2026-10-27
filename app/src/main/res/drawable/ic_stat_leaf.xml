@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path android:fillColor="#FFFFFFFF" android:pathData="M13.00,2.00h3.00v1.00h-3.00z M12.00,3.00h2.00v1.00h-2.00z M12.00,4.00h1.00v1.00h-1.00z M8.00,10.00h2.00v1.00h-2.00z M6.00,11.00h2.00v1.00h-2.00z M6.00,12.00h1.00v1.00h-1.00z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M16.00,2.00h2.00v1.00h-2.00z M14.00,3.00h4.00v1.00h-4.00z M13.00,4.00h2.00v1.00h-2.00z M16.00,4.00h2.00v1.00h-2.00z M12.00,5.00h5.00v1.00h-5.00z M13.00,6.00h1.00v1.00h-1.00z M15.00,6.00h1.00v1.00h-1.00z M10.00,10.00h6.00v1.00h-6.00z M8.00,11.00h9.00v1.00h-9.00z M7.00,12.00h1.00v1.00h-1.00z M9.00,12.00h6.00v1.00h-6.00z M16.00,12.00h1.00v1.00h-1.00z M6.00,13.00h1.00v1.00h-1.00z M9.00,13.00h6.00v1.00h-6.00z M6.00,14.00h6.00v1.00h-6.00z M14.00,14.00h3.00v1.00h-3.00z M7.00,15.00h10.00v1.00h-10.00z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M18.00,3.00h1.00v1.00h-1.00z M18.00,4.00h1.00v1.00h-1.00z M18.00,5.00h1.00v1.00h-1.00z M16.00,6.00h2.00v1.00h-2.00z M15.00,7.00h1.00v1.00h-1.00z M13.00,8.00h1.00v1.00h-1.00z M17.00,11.00h1.00v1.00h-1.00z M17.00,12.00h1.00v1.00h-1.00z M17.00,13.00h1.00v1.00h-1.00z M17.00,14.00h1.00v1.00h-1.00z M17.00,15.00h1.00v1.00h-1.00z" />
+</vector>
