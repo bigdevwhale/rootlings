@@ -25,6 +25,9 @@ class AppContainer(context: Context) {
     val garden = Garden(db.dao())
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
+    /** True while the demo build plants its garden, so the first screen doesn't jump as it fills. */
+    val seeding = kotlinx.coroutines.flow.MutableStateFlow(BuildConfig.DEMO)
+
     /** Fire-and-forget so a write survives the screen being closed right after tapping. */
     fun write(block: suspend AppContainer.() -> Unit) {
         scope.launch { block() }
@@ -48,7 +51,7 @@ class RootlingsApp : Application() {
     override fun onCreate() {
         super.onCreate()
         container = AppContainer(this)
-        if (BuildConfig.DEMO) container.scope.launch { DemoSeed.seedIfEmpty(this@RootlingsApp, container) }
+        if (BuildConfig.DEMO) container.scope.launch { try { DemoSeed.seedIfEmpty(this@RootlingsApp, container) } finally { container.seeding.value = false } }
         runCatching { Daily.schedule(this) }
     }
 }

@@ -66,6 +66,7 @@ import kotlin.math.roundToInt
 @Composable
 fun PlacePicker(ru: Boolean, onPicked: (Place) -> Unit) {
     val scope = rememberCoroutineScope()
+    val focus = androidx.compose.ui.platform.LocalFocusManager.current
     var q by remember { mutableStateOf("") }
     var results by remember { mutableStateOf<List<Place>>(emptyList()) }
     var failed by remember { mutableStateOf(false) }
@@ -82,7 +83,7 @@ fun PlacePicker(ru: Boolean, onPicked: (Place) -> Unit) {
             })
         }
         if (failed) Text(stringResource(R.string.place_fail), style = T.Small.copy(color = C.red))
-        for (p in results) Panel(Modifier.fillMaxWidth(), onClick = { results = emptyList(); q = p.name; onPicked(p) }, fill = C.paper2) {
+        for (p in results) Panel(Modifier.fillMaxWidth(), onClick = { results = emptyList(); q = p.name; focus.clearFocus(); onPicked(p) }, fill = C.paper2) {
             Text(p.name, style = T.Body)
             Text(p.region, style = T.Small)
         }
@@ -117,9 +118,9 @@ fun SettingsPage(home: Home, nav: Nav) {
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             val cur = AppCompatDelegate.getApplicationLocales().toLanguageTags().substringBefore('-').substringBefore(',')
             for ((tag, label) in listOf("" to stringResource(R.string.lang_system), "ru" to "Русский", "en" to "English")) {
-                PixelButton(label, {
+                Chip(label, cur == tag, {
                     AppCompatDelegate.setApplicationLocales(if (tag.isEmpty()) LocaleListCompat.getEmptyLocaleList() else LocaleListCompat.forLanguageTags(tag))
-                }, Modifier.weight(1f), kind = if (cur == tag) Kind.GREEN else Kind.GHOST)
+                })
             }
         }
 

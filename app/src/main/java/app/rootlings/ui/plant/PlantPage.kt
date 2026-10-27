@@ -92,11 +92,12 @@ fun PlantPage(home: Home, id: Long, nav: Nav) {
                 Text(stringResource(R.string.form_n, sp.forms[p.stage - 1](home.ru)), style = T.Small.copy(color = C.ink))
                 Text(stringResource(R.string.with_you, Words.age(ctx, p, home.nowMs)), style = T.Small)
                 if (p.lineage.isNotBlank()) Text("← " + p.lineage, style = T.Small)
-                if (sp.toxic) Text(stringResource(R.string.toxic), style = T.Small.copy(color = C.red))
+                if (sp.toxic && home.settings.pets) Text(stringResource(R.string.toxic), style = T.Small.copy(color = C.red))
             }
         }
         val line = home.content.line(st.mood, sp.element, (home.today.toEpochDay() + p.id).toInt())
-        Says(line?.invoke(home.ru) ?: "…")
+        val justDry = home.g.notes(p.id).firstOrNull()?.let { it.type == Note.CHECK && it.value == 0 && home.nowMs - it.at < 12 * 3_600_000L } == true
+        Says(if (justDry && st.mood == Mood.DRY) stringResource(R.string.say_water) else line?.invoke(home.ru) ?: "…")
 
         // light
         val mx = maxOf(sp.dliMax * 1.2, st.dliToday * 1.1, 1.0)
@@ -120,7 +121,7 @@ fun PlantPage(home: Home, id: Long, nav: Nav) {
         if (home.heating && sp.humid) Text(stringResource(R.string.humid_note), style = T.Small.copy(color = C.ink))
 
         // forms
-        Stat(stringResource(R.string.evolution), if (p.stage >= 3) stringResource(R.string.evo_top) else stringResource(R.string.evo_next, Words.leaves(ctx, maxOf(0, (if (p.stage == 1) sp.s2 else sp.s3) - p.growth))))
+        Stat(stringResource(R.string.evolution), if (p.stage >= 3) stringResource(R.string.evo_top) else if (st.evolve) stringResource(R.string.evo_ready) else stringResource(R.string.evo_next, Words.leaves(ctx, maxOf(0, (if (p.stage == 1) sp.s2 else sp.s3) - p.growth))))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.Bottom) {
             for (s in 1..3) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {

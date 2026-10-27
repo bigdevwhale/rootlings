@@ -88,6 +88,8 @@ fun RootlingsRoot(settings: Settings) {
         val job = c.scope.launch { runCatching { c.refreshWeather() } }
         onPauseOrDispose { job.cancel() }
     }
+    val seeding by c.seeding.collectAsStateWithLifecycle()
+    if (seeding) { Box(Modifier.fillMaxSize().background(C.bg)); return }
     if (!settings.onboarded) { Onboarding(); return }
     val g = state ?: run { Box(Modifier.fillMaxSize().background(C.bg)); return }
     val home = remember(g, settings, now.hour, now.minute / 10, ctx.ru) {

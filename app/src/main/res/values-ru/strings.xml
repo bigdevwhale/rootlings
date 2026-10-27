@@ -54,6 +54,8 @@
     <string name="evolution">Формы</string>
     <string name="evo_top">высшая форма</string>
     <string name="evo_next">ещё %1$s до новой формы</string>
+    <string name="evo_ready">готова к новой форме!</string>
+    <string name="say_water">Спасибо, что проверил! Сухо, как я и думал. Теперь попить бы — до воды в поддоне.</string>
     <string name="evolve_go">! ЭВОЛЮЦИЯ !</string>
     <string name="new_leaf">+1 ЛИСТ</string>
     <string name="bloomed">ЗАЦВЕЛО</string>
@@ -180,8 +182,8 @@
     <string name="nursery_title">ЯСЛИ</string>
     <string name="nursery_empty">Черенки здесь — это яйца. Возьми черенок на странице растения, а когда покажутся корни — вылупится дух.</string>
     <string name="egg_of">Детка: %1$s</string>
-    <string name="egg_water">в стакане %1$s · корни примерно через %2$s</string>
-    <string name="egg_soil">в земле %1$s · корни примерно через %2$s</string>
+    <string name="egg_water">в стакане %1$s · корни обычно за %2$s</string>
+    <string name="egg_soil">в земле %1$s · корни обычно за %2$s</string>
     <string name="egg_care_water">Меняй воду раз в три-четыре дня; светлое окно ускорит корни.</string>
     <string name="egg_care_soil">Держи землю чуть влажной, пакет сверху — для влажности. Сопротивляется лёгкому потягиванию — значит, корни есть.</string>
     <string name="roots">КОРНИ ПОКАЗАЛИСЬ!</string>

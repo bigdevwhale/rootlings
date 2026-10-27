@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -55,7 +56,7 @@ fun Onboarding() {
     var window by rememberSaveable { mutableStateOf<String?>(null) }
     var addWindow by remember { mutableStateOf(false) }
     val notify = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { }
-    Column(Modifier.fillMaxSize().background(C.bg)) {
+    Column(Modifier.fillMaxSize().background(C.bg).imePadding()) {
         Box(Modifier.fillMaxWidth().background(C.red).statusBarsPadding().padding(16.dp)) {
             Text(stringResource(R.string.app_title), style = T.Display.copy(color = C.paper))
         }

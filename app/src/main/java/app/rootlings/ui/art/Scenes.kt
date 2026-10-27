@@ -86,7 +86,6 @@ class WindowScene(val out: Outside, val looks: List<Look>, val seed: Int) : Scen
         }
         val beam = min(1.0, out.gain / 380)
         if (beam > .02) for (y in 58 until 62) for (x in 8 until 112) if (bay(x, y) / 16.0 < beam * .9) b.p(x, y, rgb(0xFFF0A8))
-        if (beam > .3) for (k in 0 until 4) for (s in 0 until 40) { val x = 20 + k * 24 + s / 2; val y = 14 + s; if (bay(x, y) / 16.0 < beam * .35) b.p(x, y, rgb(0xFFF8D0)) }
     }
 
     private inline fun clip(b: Buf, x: Int, y: Int, w: Int, h: Int, draw: (Buf) -> Unit) {

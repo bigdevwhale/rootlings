@@ -54,6 +54,8 @@
     <string name="evolution">Forms</string>
     <string name="evo_top">the highest form</string>
     <string name="evo_next">%1$s to the next form</string>
+    <string name="evo_ready">ready to change form!</string>
+    <string name="say_water">Thanks for checking! Dry, as I thought. A drink now, please, until it runs from the bottom.</string>
     <string name="evolve_go">! EVOLVE !</string>
     <string name="new_leaf">+1 LEAF</string>
     <string name="bloomed">IT BLOOMED</string>
@@ -180,8 +182,8 @@
     <string name="nursery_title">NURSERY</string>
     <string name="nursery_empty">Cuttings are eggs here. Take one from a plant\'s page («Take a cutting»), and when the roots show, a spirit hatches.</string>
     <string name="egg_of">%1$s\'s baby</string>
-    <string name="egg_water">in a glass %1$s · roots in about %2$s</string>
-    <string name="egg_soil">in soil %1$s · roots in about %2$s</string>
+    <string name="egg_water">in a glass %1$s · roots usually take %2$s</string>
+    <string name="egg_soil">in soil %1$s · roots usually take %2$s</string>
     <string name="egg_care_water">Change the water every three or four days; a sunny window speeds the roots.</string>
     <string name="egg_care_soil">Keep the soil just damp, a bag over the pot keeps it humid. A gentle tug that resists means roots.</string>
     <string name="roots">THE ROOTS ARE OUT!</string>

@@ -83,6 +83,7 @@ fun CatchFlow(home: Home, sillId: Long?, nav: Nav) {
         pending = null
     }
     val sp = speciesId?.let { home.content.species(it) }
+    androidx.compose.runtime.DisposableEffect(Unit) { onDispose { if (caught == null) Photos.delete(ctx, photo) } }
 
     Page(stringResource(R.string.catch_title), nav.pop) {
         // 1. the photo
@@ -102,7 +103,7 @@ fun CatchFlow(home: Home, sillId: Long?, nav: Nav) {
                 BufImage(remember(sp.id, hue) { Spirit.draw(home.look(sp).copy(hue = hue ?: sp.hue)) }, scale = 2.dp)
                 Column(Modifier.weight(1f).padding(start = 8.dp)) {
                     Text(sp.name(home.ru), style = T.Heading)
-                    Text(sp.latin + " · " + Words.element(ctx, sp.element), style = T.Small)
+                    Text(listOf(sp.latin, Words.element(ctx, sp.element)).filter { it.isNotBlank() }.joinToString(" · "), style = T.Small)
                 }
                 Text(stringResource(R.string.change), style = T.Small.copy(color = C.red))
             }

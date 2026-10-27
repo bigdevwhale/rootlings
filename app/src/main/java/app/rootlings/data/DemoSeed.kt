@@ -67,6 +67,7 @@ object DemoSeed {
         val basil = plant("ocimum_basilicum", t("Basil", "Базилик"), south, 200, 1, 3, 100, 50.0)
         dao.plant(basil)?.let { dao.update(it.copy(gone = now - 60 * DAY, goneHow = Plant.DIED)) }
         c.garden.state.first()
+        c.seeding.value = false
         runCatching { c.refreshWeather(force = true) }
     }
 }
